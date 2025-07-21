@@ -50,8 +50,8 @@ export const forgotAdminPassword = async (req, res) => {
     subject: "Admin Password Reset OTP",
     html: `Your OTP is: ${otp}`,
   });
-
-  res.json({ message: "OTP sent to email" });
+  console.log("OTP sent to email:", email);
+  res.json({ message: "OTP sent to email ." });
 };
 
 // Reset Password (with OTP)
