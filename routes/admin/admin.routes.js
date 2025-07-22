@@ -22,6 +22,20 @@ import {
   softDeleteAnnouncement,
   updateAnnouncement,
 } from "../../controllers/admin/Announcement/admin.announcement.controller.js";
+import {
+  createCourse,
+  deleteCourse,
+  getCourseById,
+  getCourses,
+  updateCourse,
+} from "../../controllers/admin/Courses/courses.controller.js";
+import {
+  createChapter,
+  deleteChapter,
+  getAllChapters,
+  getChapterById,
+  updateChapter,
+} from "../../controllers/admin/Courses/chapter.controller.js";
 
 const router = express.Router();
 
@@ -47,6 +61,27 @@ router.get("/getall/announcement", getAllAnnouncements);
 router.get("/get/announcement/:id", getAnnouncementById);
 router.put("/update/announcement/:id", updateAnnouncement);
 router.delete("/delete/announcement/:id", deleteAnnouncement);
-router.put("/soft-delete/announcement/:id/inactive", softDeleteAnnouncement); // soft delete
+router.put("/soft-delete/announcement/:id/inactive", softDeleteAnnouncement); // soft  delete
+
+//** This is Course Routes */
+// Create a new course
+router.post("/create/courses", createCourse);
+// Get all courses
+router.get("/get/courses", getCourses);
+// Get a specific course by ID
+router.get("/get/courseById/:id", getCourseById);
+// Update a course by ID
+router.put("/update/courseById/:id", updateCourse);
+// Delete a course by ID
+router.delete("/delete/courseById/:id", deleteCourse);
+
+// * This is Chapter Routes
+router.post("/create/chapter", createChapter);
+router.get("/get/all/chapters", getAllChapters);
+router.get("/get/chapterById/:id", getChapterById);
+// Update a chapter by ID
+router.put("/update/chapterById/:id", updateChapter);
+// Delete a chapter by ID
+router.delete("/delete/chapterById/:id", deleteChapter);
 
 export default router;

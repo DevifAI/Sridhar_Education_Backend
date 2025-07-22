@@ -17,6 +17,7 @@ import {
   getAllAnnouncements,
   getAnnouncementById,
 } from "../../controllers/admin/Announcement/admin.announcement.controller.js";
+import { getAllCourses } from "../../controllers/user/Courses/user.courses.controller.js";
 
 // Fix __dirname in ES module
 const __filename = fileURLToPath(import.meta.url);
@@ -46,5 +47,8 @@ router.get("/get/banners", getBanners); // get all
 
 router.get("/getall/announcement", getAllAnnouncements);
 router.get("/get/announcement/:id", getAnnouncementById);
+
+// * This is Courses Routes
+router.get("/get/all/courses/", getAllCourses);
 
 export default router;
