@@ -59,6 +59,16 @@ export const loginUser = async (req, res) => {
     console.log({ user });
     if (!user) return res.status(404).json({ message: "User not found" });
 
+    // Device ID check
+    if (
+      !user.deviceId ||
+      user.deviceId.trim().toLowerCase() !== deviceId.trim().toLowerCase()
+    ) {
+      return res.status(403).json({
+        message: "Unauthorized device access. Device ID does not match.",
+      });
+    }
+
     // Check password
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch)
@@ -82,8 +92,6 @@ export const loginUser = async (req, res) => {
     delete userObj.password;
     delete userObj.createdAt;
     delete userObj.refreshToken;
-
-    console.log({ userObj });
 
     res.json({
       message: "Login successful",
