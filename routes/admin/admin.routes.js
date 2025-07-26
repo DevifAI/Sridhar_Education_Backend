@@ -36,6 +36,8 @@ import {
   getChapterById,
   updateChapter,
 } from "../../controllers/admin/Courses/chapter.controller.js";
+import { getAllUsers, getUserByEmail, getUserById, getUserByName } from "../../controllers/admin/Users/userController.js";
+
 
 const router = express.Router();
 
@@ -83,5 +85,14 @@ router.get("/get/chapterById/:id", getChapterById);
 router.put("/update/chapterById/:id", updateChapter);
 // Delete a chapter by ID
 router.delete("/delete/chapterById/:id", deleteChapter);
+
+
+
+// get all users //api
+router.get("/get/all/users", getAllUsers)
+router.get("/getuserbyid/:id", getUserById);
+router.get('/getUserByEmail/:email',getUserByEmail)
+router.get('/getUserByName/:Name',getUserByName)
+
 
 export default router;
